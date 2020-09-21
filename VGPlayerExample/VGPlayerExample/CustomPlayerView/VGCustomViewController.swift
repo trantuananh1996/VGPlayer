@@ -20,7 +20,7 @@ class VGCustomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        self.url = URL(string: "http://download.3g.joy.cn/video/236/60236853/1450837945724_hd.mp4")
+        //        self.url = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         if  let srt = Bundle.main.url(forResource: "Despacito Remix Luis Fonsi ft.Daddy Yankee Justin Bieber Lyrics [Spanish]", withExtension: "srt") {
             let playerView = self.player.displayView as! VGCustomPlayerView
             playerView.setSubtitles(VGSubtitles(filePath: srt))

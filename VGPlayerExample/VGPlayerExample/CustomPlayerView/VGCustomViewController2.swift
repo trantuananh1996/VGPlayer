@@ -49,13 +49,13 @@ class VGCustomViewController2: UIViewController {
     }
     
     func getVideos() -> URL{
-        self.dataScource = ["http://baobab.wdjcdn.com/1451826889080C.mp4",
-                            "http://baobab.wdjcdn.com/14399887845852_x264.mp4",
-                            "http://baobab.wdjcdn.com/1442142801331138639111.mp4",
-                            "http://baobab.wdjcdn.com/143625320119607.mp4",
-                            "http://baobab.wdjcdn.com/145345719887961975219.mp4",
-                            "http://baobab.wdjcdn.com/1442142801331138639111.mp4",
-                            "http://baobab.wdjcdn.com/143323298510702.mp4"]
+        self.dataScource = ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"]
         nextCount = nextCount % self.dataScource.count
         let url = URL(string: self.dataScource[nextCount])!
         nextCount += 1

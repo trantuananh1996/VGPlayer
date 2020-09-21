@@ -14,7 +14,7 @@ class VGVerticalViewController: UIViewController {
     var player : VGPlayer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: "http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8")
+        let url = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         if url != nil {
             player = VGPlayer(URL: url!)
         }

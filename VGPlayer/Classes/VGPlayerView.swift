@@ -218,6 +218,8 @@ open class VGPlayerView: UIView {
         configurationBottomView()
         configurationReplayButton()
         setupViewAutoLayout()
+        bottomView.layer.cornerRadius = 8
+       
     }
     
     open func reloadPlayerView() {
@@ -264,7 +266,8 @@ extension VGPlayerView {
         }
     }
 
-    open func enterFullscreen() {
+    @objc open func enterFullscreen() {
+        print("Enter full screen called")
         let statusBarOrientation = UIApplication.shared.statusBarOrientation
         if statusBarOrientation == .portrait{
             parentView = (self.superview)!
@@ -275,7 +278,7 @@ extension VGPlayerView {
         UIApplication.shared.setStatusBarHidden(false, with: .fade)
     }
     
-    open func exitFullscreen() {
+    @objc open func exitFullscreen() {
         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         UIApplication.shared.statusBarOrientation = .portrait
     }
@@ -429,13 +432,17 @@ extension VGPlayerView {
     @objc internal func onFullscreen(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         isFullScreen = sender.isSelected
+        onFullScreenTapped()
+    }
+    
+    @objc open func onFullScreenTapped(){
+        print("onFullScreen")
         if isFullScreen {
             enterFullscreen()
         } else {
             exitFullscreen()
         }
     }
-    
     
     /// Single Tap Event
     ///
@@ -574,7 +581,7 @@ extension VGPlayerView {
             onDeviceOrientation(false, orientation: .portraitUpsideDown)
         }
     }
-    internal func onDeviceOrientation(_ fullScreen: Bool, orientation: UIInterfaceOrientation) {
+    @objc open func onDeviceOrientation(_ fullScreen: Bool, orientation: UIInterfaceOrientation) {
         let statusBarOrientation = UIApplication.shared.statusBarOrientation
         if orientation == statusBarOrientation {
             if orientation == .landscapeLeft || orientation == .landscapeLeft {
@@ -671,6 +678,7 @@ extension VGPlayerView {
         fullscreenButton.setImage(VGPlayerUtils.imageSize(image: enlargeImage!, scaledToSize: CGSize(width: 15, height: 15)), for: .normal)
         fullscreenButton.setImage(VGPlayerUtils.imageSize(image: narrowImage!, scaledToSize: CGSize(width: 15, height: 15)), for: .selected)
         fullscreenButton.addTarget(self, action: #selector(onFullscreen(_:)), for: .touchUpInside)
+        print("Here TA")
         bottomView.addSubview(fullscreenButton)
         
     }
@@ -712,7 +720,7 @@ extension VGPlayerView {
             make.bottom.equalTo(strongSelf)
             make.height.equalTo(52)
         }
-        
+   
         playButtion.snp.makeConstraints { [weak self] (make) in
             guard let strongSelf = self else { return }
             make.left.equalTo(strongSelf.bottomView).offset(20)

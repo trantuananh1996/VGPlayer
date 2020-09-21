@@ -18,7 +18,7 @@ class VGMediaViewController: UIViewController {
         super.viewDidLoad()
         
         self.url1 = URL(fileURLWithPath: Bundle.main.path(forResource: "2", ofType: "mp4")!)
-        let url = URL(string: "http://lxdqncdn.miaopai.com/stream/6IqHc-OnSMBIt-LQjPJjmA__.mp4?ssig=a81b90fdeca58e8ea15c892a49bce53f&time_stamp=1508166491488")!
+        let url = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!
         
         self.player.replaceVideo(url)
         view.addSubview(self.player.displayView)
