@@ -10,9 +10,9 @@ import Foundation
 
 public extension Notification.Name {
     
-    public static var VGPlayerCacheManagerDidUpdateCache = Notification.Name.init("com.vein.VGplayer.CacheManagerDidUpdateCache")
-    public static var VGPlayerCacheManagerDidFinishCache = Notification.Name.init("com.vein.VGplayer.CacheManagerDidFinishCache")
-    public static var VGPlayerCacheManagerDidCleanCache = Notification.Name.init("com.vein.VGplayer.CacheManagerDidCleanCache")
+    static var VGPlayerCacheManagerDidUpdateCache = Notification.Name.init("com.vein.VGplayer.CacheManagerDidUpdateCache")
+    static var VGPlayerCacheManagerDidFinishCache = Notification.Name.init("com.vein.VGplayer.CacheManagerDidFinishCache")
+    static var VGPlayerCacheManagerDidCleanCache = Notification.Name.init("com.vein.VGplayer.CacheManagerDidCleanCache")
 }
 
 open class VGPlayerCacheManager: NSObject {

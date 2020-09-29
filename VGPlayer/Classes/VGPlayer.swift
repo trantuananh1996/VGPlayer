@@ -408,6 +408,11 @@ extension VGPlayer {
                     stopPlayerBuffering()
                     delegate?.vgPlayer(self, playerFailed: error)
                     displayView.playFailed(error)
+                @unknown default:
+                    collectPlayerErrorLogEvent()
+                    stopPlayerBuffering()
+                    delegate?.vgPlayer(self, playerFailed: error)
+                    displayView.playFailed(error)
                 }
                 
             } else if keyPath == #keyPath(AVPlayerItem.playbackBufferEmpty){

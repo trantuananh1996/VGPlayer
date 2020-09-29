@@ -93,6 +93,9 @@ open class VGPlayerView: UIView {
     open var playButtion : UIButton = UIButton(type: .custom)
     open var volumeSlider : UISlider!
     open var replayButton : UIButton = UIButton(type: .custom)
+    open var buttonResolution: UIButton = UIButton(type: .custom)
+
+    
     open fileprivate(set) var panGestureDirection : VGPlayerViewPanGestureDirection = .horizontal
     fileprivate var isVolume : Bool = false
     fileprivate var sliderSeekTimeValue : TimeInterval = .nan
@@ -579,6 +582,8 @@ extension VGPlayerView {
             onDeviceOrientation(false, orientation: .portrait)
         case .portraitUpsideDown:
             onDeviceOrientation(false, orientation: .portraitUpsideDown)
+        @unknown default:
+            break
         }
     }
     @objc open func onDeviceOrientation(_ fullScreen: Bool, orientation: UIInterfaceOrientation) {
@@ -681,6 +686,17 @@ extension VGPlayerView {
         print("Here TA")
         bottomView.addSubview(fullscreenButton)
         
+        
+    
+        buttonResolution.contentHorizontalAlignment = .center
+        buttonResolution.setTitle("1080p", for: .normal)
+        buttonResolution.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
+        buttonResolution.titleLabel?.textColor = .white
+        
+        bottomView.addSubview(buttonResolution)
+        
+        
+        
     }
     
     internal func setupViewAutoLayout() {
@@ -720,7 +736,7 @@ extension VGPlayerView {
             make.bottom.equalTo(strongSelf)
             make.height.equalTo(52)
         }
-   
+        
         playButtion.snp.makeConstraints { [weak self] (make) in
             guard let strongSelf = self else { return }
             make.left.equalTo(strongSelf.bottomView).offset(20)
@@ -731,7 +747,7 @@ extension VGPlayerView {
         
         timeLabel.snp.makeConstraints { [weak self] (make) in
             guard let strongSelf = self else { return }
-            make.right.equalTo(strongSelf.fullscreenButton.snp.left).offset(-10)
+            make.right.equalTo(strongSelf.buttonResolution.snp.left).offset(-10)
             make.centerY.equalTo(strongSelf.playButtion)
             make.height.equalTo(30)
         }
@@ -756,6 +772,16 @@ extension VGPlayerView {
             make.center.equalTo(strongSelf)
             make.height.equalTo(30)
             make.width.equalTo(30)
+        }
+        
+        
+        
+
+        buttonResolution.snp.makeConstraints{ [weak self] (make) in
+            guard let strongSelf = self else { return }
+            make.right.equalTo(strongSelf.fullscreenButton.snp.left).offset(-10)
+            make.centerY.equalTo(strongSelf.playButtion)
+            make.height.equalTo(30)
         }
     }
 }
